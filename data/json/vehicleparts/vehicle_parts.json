@@ -3319,7 +3319,7 @@
       "repair": { "skills": [ [ "mechanics", 5 ] ], "time": "60 m", "using": [ [ "repair_welding_standard", 3 ] ] }
     },
     "flags": [ "FLOATS" ],
-    "breaks_into": "ig_vp_sheet_metal",
+    "breaks_into": { "item": "scrap_aluminum", "count": [ 15, 27 ] },
     "damage_reduction": { "all": 18 }
   },
   {
