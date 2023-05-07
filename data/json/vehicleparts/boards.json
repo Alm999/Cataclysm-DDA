@@ -59,6 +59,24 @@
     "extend": { "flags": [ "HALF_BOARD" ] }
   },
   {
+    "id": "stowboard",
+    "type": "vehicle_part",
+    "copy-from": "board_abstract",
+    "name": { "str": "stow board" },
+    "description": "A metal wall with a storage locker.  Keeps zombies outside the vehicle and prevents people from seeing through it.",
+    "color": "white",
+    "broken_symbol": "#",
+    "broken_color": "light_gray",
+    "proportional": { "durability": 0.67 },
+    "size": "62500 ml",
+    "requirements": {
+      "install": { "skills": [ [ "mechanics", 2 ] ], "time": "60 m", "using": [ [ "welding_standard", 5 ] ] },
+      "removal": { "skills": [ [ "mechanics", 2 ] ], "time": "30 m", "using": [ [ "vehicle_weld_removal", 1 ] ] },
+      "repair": { "skills": [ [ "mechanics", 3 ] ], "time": "60 m", "using": [ [ "repair_welding_standard", 2 ] ] }
+    },
+    "extend": { "categories": [ "cargo" ], "flags": [ "OPAQUE", "CARGO", "COVERED", "FULL_BOARD", "LOCKABLE_CARGO" ] }
+  },
+  {
     "abstract": "clothboard_abstract",
     "copy-from": "base_board_abstract",
     "type": "vehicle_part",
@@ -92,37 +110,6 @@
     "extend": { "flags": [ "HALF_BOARD" ] }
   },
   {
-    "id": "stowboard",
-    "type": "vehicle_part",
-    "copy-from": "base_board_abstract",
-    "name": { "str": "stow board" },
-    "item": "sheet_metal",
-    "color": "white",
-    "broken_symbol": "#",
-    "broken_color": "light_gray",
-    "durability": 80,
-    "description": "A metal wall with a storage locker.  Keeps zombies outside the vehicle and prevents people from seeing through it.",
-    "size": "62500 ml",
-    "requirements": {
-      "install": { "skills": [ [ "mechanics", 2 ] ], "time": "60 m", "using": [ [ "welding_standard", 5 ] ] },
-      "removal": { "skills": [ [ "mechanics", 2 ] ], "time": "30 m", "using": [ [ "vehicle_weld_removal", 1 ] ] },
-      "repair": { "skills": [ [ "mechanics", 3 ] ], "time": "60 m", "using": [ [ "repair_welding_standard", 2 ] ] }
-    },
-    "extend": { "categories": [ "cargo" ], "flags": [ "OPAQUE", "CARGO", "COVERED", "FULL_BOARD", "LOCKABLE_CARGO" ] },
-    "damage_reduction": { "all": 7 }
-  },
-  {
-    "id": "hdstowboard",
-    "copy-from": "stowboard",
-    "type": "vehicle_part",
-    "name": { "str": "heavy-duty stow board" },
-    "item": "steel_plate",
-    "color": "brown",
-    "broken_color": "dark_gray",
-    "proportional": { "durability": 4.15, "size": 0.76 },
-    "damage_reduction": { "all": 20 }
-  },
-  {
     "abstract": "hdboard_abstract",
     "type": "vehicle_part",
     "copy-from": "base_board_abstract",
@@ -137,6 +124,18 @@
       "repair": { "skills": [ [ "mechanics", 2 ] ], "time": "60 m", "using": [ [ "repair_welding_standard", 3 ] ] }
     },
     "damage_reduction": { "all": 20 }
+  },
+  {
+    "id": "hdstowboard",
+    "copy-from": "hdboard_abstract",
+    "type": "vehicle_part",
+    "name": { "str": "heavy-duty stow board" },
+    "color": "brown",
+    "broken_color": "dark_gray",
+    "proportional": { "durability": 0.67 },
+    "//": "The volume should stay roughly the same as a normal stow-board. It is just sturdier.",
+    "size": "62500 ml",
+    "extend": { "categories": [ "cargo" ], "flags": [ "OPAQUE", "CARGO", "COVERED", "FULL_BOARD", "LOCKABLE_CARGO" ] }
   },
   {
     "id": "hdboard",
@@ -197,7 +196,7 @@
     "looks_like": "halfboard",
     "durability": 70,
     "description": "A half-height thin metal wall.  Keeps zombies outside the vehicle but allows people to see over it.",
-    "breaks_into": [ { "item": "pipe", "prob": 50 } ],
+    "breaks_into": "ig_vp_pipe",
     "requirements": {
       "install": { "skills": [ [ "mechanics", 1 ] ], "time": "60 m", "using": [ [ "welding_standard", 5 ] ] },
       "removal": { "skills": [ [ "mechanics", 2 ] ], "time": "30 m", "using": [ [ "vehicle_weld_removal", 1 ] ] },
