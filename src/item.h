@@ -1306,6 +1306,13 @@ class item : public visitable
         // @see itype::damage_level()
         int damage_level() const;
 
+        // modifies melee weapon damage to account for item's damage
+        float damage_adjusted_melee_weapon_damage( float value ) const;
+        // modifies gun damage to account for item's damage
+        float damage_adjusted_gun_damage( float value ) const;
+        // modifies armor resist to account for item's damage
+        float damage_adjusted_armor_resist( float value ) const;
+
         // @return 0 if item is count_by_charges() or 4000 ( value of itype::damage_max_ )
         int max_damage() const;
 
@@ -1633,7 +1640,7 @@ class item : public visitable
         bool spill_contents( const tripoint &pos );
         bool spill_open_pockets( Character &guy, const item *avoid = nullptr );
         // spill items that don't fit in the container
-        void overflow( const tripoint &pos );
+        void overflow( const tripoint &pos, const item_location &loc = item_location::nowhere );
 
         /** Checks if item is a holster and currently capable of storing obj
          *  @param obj object that we want to holster
